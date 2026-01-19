@@ -4,10 +4,10 @@ import useBlogPosts from "../hooks/useBlogPosts";
 
 function ViewPostPage() {
   const navigate = useNavigate();
-  const { postId } = useParams();
+  const { id } = useParams();
 
   const { posts, isLoading, isError, getPostById } = useBlogPosts();
-  const currentPost = getPostById(postId);
+  const currentPost = getPostById(id);
 
   return (
     <div>
@@ -17,7 +17,10 @@ function ViewPostPage() {
           <>
             <h2>{currentPost.title}</h2>
             <p>{currentPost.content}</p>
-            <p>Likes: {currentPost.likes}</p>
+            <div className="likes-bar">
+              <span className="likes-icon">❤️</span>
+              <span className="likes-count">{currentPost.likes}</span>
+            </div>
           </>
         ) : (
           <p>Post not found</p>
@@ -32,7 +35,12 @@ function ViewPostPage() {
             <div key={post.id} className="post">
               <h1>{post.title}</h1>
               <div className="post-actions">
-                <button className="view-button">View post</button>
+                <button 
+                  className="view-button"
+                  onClick={() => navigate(`/post/view/${post.id}`)}
+                >
+                  View post
+                </button>
               </div>
             </div>
           );

@@ -4,13 +4,22 @@ import useBlogPosts from "../hooks/useBlogPosts";
 function HomePage() {
   const navigate = useNavigate();
 
-  const { posts, isError, isLoading } = useBlogPosts();
+  const { posts, isError, isLoading, deletePost } = useBlogPosts();
+
+  const handleDelete = async (postId) => {
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      const success = await deletePost(postId);
+      if (!success) {
+        alert("Failed to delete post");
+      }
+    }
+  };
 
   return (
     <div>
       <div className="app-wrapper">
         <h1 className="app-title">Posts</h1>
-        <button>Create Post</button>
+        <button onClick={() => navigate("/post/create")}>Create Post</button>
       </div>
       <div className="board">
         {posts.map((post) => {
@@ -24,10 +33,10 @@ function HomePage() {
                 >
                   View post
                 </button>
-                <button className="edit-button">Edit post</button>
+                <button className="edit-button" onClick={() => navigate(`/post/edit/${post.id}`)}>Edit post</button>
               </div>
 
-              <button className="delete-button">x</button>
+              <button className="delete-button" onClick={() => handleDelete(post.id)}>x</button>
             </div>
           );
         })}

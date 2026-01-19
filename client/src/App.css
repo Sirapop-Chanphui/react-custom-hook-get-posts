@@ -8,6 +8,7 @@
   --primary-color: hsl(0, 60%, 20%);
   --secondary-color: hsl(0, 60%, 35%);
   --highlight-color: antiquewhite;
+  --likes-color: #4CAF50;
 
   --text-primary-color: var(var(--primary-color));
 
@@ -19,6 +20,26 @@ body {
   font-family: kanit;
   padding: 50px;
   background-color: var(--muted-color-100);
+}
+
+.likes-bar {
+  background-color: var(--likes-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.likes-icon {
+  font-size: 16px;
+}
+
+.likes-count {
+  font-size: 14px;
 }
 
 .app-wrapper {

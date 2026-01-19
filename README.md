@@ -3,11 +3,12 @@
 โปรเจกต์สอนการสร้าง Custom Hook ใน React สำหรับจัดการข้อมูลโพสต์ (Posts) พร้อม REST API Backend
 
 ## 🚀 Features
-- ✅ Full CRUD Operations (Create, Read, Update, Delete)
+- ✅ **READ Operations** - ดูรายการโพสต์ทั้งหมดและรายละเอียด
 - ✅ React Custom Hook สำหรับ API calls
 - ✅ React Router สำหรับ navigation
 - ✅ Responsive UI ด้วย CSS
 - ✅ Error Handling และ Loading states
+- 🚧 **CREATE/UPDATE/DELETE** - Backend พร้อม แต่ Frontend ยังไม่เชื่อมต่อ
 
 ## 🛠️ Tech Stack
 
@@ -97,9 +98,25 @@ react-custom-hook-get-posts/
 
 ## 🐛 Known Issues
 
-- ยังไม่มีการเชื่อมต่อ API บางส่วนใน frontend
-- Custom Hook ยังไม่ได้ implement
+- ✅ Custom Hook ได้ implement แล้ว
+- ✅ READ operations ทำงานได้ปกติ
+- 🚧 CREATE/UPDATE/DELETE operations ยังไม่ได้เชื่อมต่อกับ frontend
+- 🚧 "Create Post" และ "Edit Post" buttons ยังไม่ทำงาน
 - มี security vulnerabilities ใน dependencies (สามารถแก้ไขด้วย `npm audit fix`)
+
+## 🎯 Current Status
+
+### ✅ Completed
+- useBlogPosts custom hook พร้อม getPostById
+- HomePage และ ViewPostPage ใช้ custom hook
+- Navigation และ data display ทำงานได้
+- Likes bar UI enhancement
+
+### 🚧 Next Steps (Optional)
+- เชื่อมต่อ CREATE operation (POST /posts)
+- เชื่อมต่อ UPDATE operation (PUT /posts/:id)
+- เชื่อมต่อ DELETE operation (DELETE /posts/:id)
+- Form components สำหรับ Create/Edit
 
 ## 🤝 Contributing
 

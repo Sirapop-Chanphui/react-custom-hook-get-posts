@@ -24,14 +24,51 @@ const useBlogPosts = () => {
   }, []);
 
   const getPostById = (id) => {
+    if (!id) return null;
     return posts.find(post => post.id === parseInt(id));
+  };
+
+  const createPost = async (postData) => {
+    try {
+      await axios.post("http://localhost:4000/posts", postData);
+      await getPosts(); // Refresh data
+      return true;
+    } catch (error) {
+      setIsError(true);
+      return false;
+    }
+  };
+
+  const updatePost = async (id, postData) => {
+    try {
+      await axios.put(`http://localhost:4000/posts/${id}`, postData);
+      await getPosts(); // Refresh data
+      return true;
+    } catch (error) {
+      setIsError(true);
+      return false;
+    }
+  };
+
+  const deletePost = async (id) => {
+    try {
+      await axios.delete(`http://localhost:4000/posts/${id}`);
+      await getPosts(); // Refresh data
+      return true;
+    } catch (error) {
+      setIsError(true);
+      return false;
+    }
   };
 
   return {
     posts,
     isLoading,
     isError,
-    getPostById
+    getPostById,
+    createPost,
+    updatePost,
+    deletePost
   };
 };
 
