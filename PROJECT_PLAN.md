@@ -125,14 +125,14 @@ const { posts, isLoading, isError } = useBlogPosts();
 - [x] Add error handling
 - [x] Test hook independently
 
-#### Phase 2: Component Updates
-- [ ] Backup current HomePage.jsx
-- [ ] Update HomePage.jsx to use useBlogPosts
-- [ ] Test HomePage functionality
-- [ ] Backup current ViewPostPage.jsx
-- [ ] Update ViewPostPage.jsx to use useBlogPosts
-- [ ] Add "All Posts" section to ViewPostPage
-- [ ] Test ViewPostPage functionality
+#### Phase 2: Component Updates - ✅ COMPLETED
+- [x] Backup current HomePage.jsx
+- [x] Update HomePage.jsx to use useBlogPosts
+- [x] Test HomePage functionality
+- [x] Backup current ViewPostPage.jsx
+- [x] Update ViewPostPage.jsx to use useBlogPosts
+- [x] Add "All Posts" section to ViewPostPage
+- [x] Test ViewPostPage functionality
 
 #### Phase 3: Integration Testing
 - [ ] Test navigation between pages
@@ -198,9 +198,9 @@ const { posts, isLoading, isError } = useBlogPosts();
 
 ### Functional Requirements
 - ✅ useBlogPosts hook ทำงานได้ถูกต้อง
-- [ ] HomePage ใช้ hook ได้โดยไม่มีข้อผิดพลาด
-- [ ] ViewPostPage แสดงรายการโพสต์ทั้งหมด
-- [ ] ไม่มีโค้ดซ้ำซ้อนสำหรับ API calls
+- ✅ HomePage ใช้ hook ได้โดยไม่มีข้อผิดพลาด
+- ✅ ViewPostPage แสดงรายการโพสต์ทั้งหมด
+- ✅ ไม่มีโค้ดซ้ำซ้อนสำหรับ API calls
 
 ### Code Quality
 - ✅ Code ตามหลักการ DRY
@@ -218,4 +218,4 @@ const { posts, isLoading, isError } = useBlogPosts();
 
 **Last Updated:** January 2026  
 **Project:** React Custom Hook - Posts Management  
-**Status:** Phase 1 ✅ COMPLETED | Phase 2 Ready to Start
+**Status:** Phase 1 ✅ COMPLETED | Phase 2 ✅ COMPLETED | Phase 3 Ready to Start
