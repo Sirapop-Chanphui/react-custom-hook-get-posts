@@ -23,10 +23,15 @@ const useBlogPosts = () => {
     getPosts();
   }, []);
 
+  const getPostById = (id) => {
+    return posts.find(post => post.id === parseInt(id));
+  };
+
   return {
     posts,
     isLoading,
-    isError
+    isError,
+    getPostById
   };
 };
 

@@ -1,17 +1,27 @@
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useBlogPosts from "../hooks/useBlogPosts";
 
 function ViewPostPage() {
   const navigate = useNavigate();
+  const { postId } = useParams();
 
-  const { posts, isLoading, isError } = useBlogPosts();
+  const { posts, isLoading, isError, getPostById } = useBlogPosts();
+  const currentPost = getPostById(postId);
 
   return (
     <div>
       <h1>View Post Page</h1>
       <div className="view-post-container">
-        <h2>Post Title</h2>
-        <p>Content</p>
+        {currentPost ? (
+          <>
+            <h2>{currentPost.title}</h2>
+            <p>{currentPost.content}</p>
+            <p>Likes: {currentPost.likes}</p>
+          </>
+        ) : (
+          <p>Post not found</p>
+        )}
       </div>
 
       <hr />
