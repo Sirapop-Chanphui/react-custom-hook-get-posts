@@ -1,36 +1,33 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import useBlogPosts from "../hooks/useBlockPosts";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function ViewPostPage() {
   const navigate = useNavigate();
-
-  const [posts, setPosts] = useState([]);
-  const [isError, setIsError] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
-
-  const getPosts = async () => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      const results = await axios("http://localhost:4000/posts");
-      setPosts(results.data.data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsError(true);
-    }
-  };
+  const { posts, selectedPost, getPosts, isLoading, getPostById, isError } = useBlogPosts();
+  const { id } = useParams();
 
   useEffect(() => {
     getPosts();
   }, []);
 
+  useEffect(() => {
+    getPostById(id);
+  }, [id]);
+
   return (
     <div>
       <h1>View Post Page</h1>
       <div className="view-post-container">
-        <h2>Post Title</h2>
-        <p>Content</p>
+        {selectedPost ? (
+          <>
+            <h2>{selectedPost.title}</h2>
+            <p>{selectedPost.content}</p>
+          </>
+        ) : null}
+        {isError ? <h1>Request failed</h1> : null}
+        {isLoading ? <h1>Loading ....</h1> : null}
       </div>
 
       <hr />
@@ -41,7 +38,12 @@ function ViewPostPage() {
             <div key={post.id} className="post">
               <h1>{post.title}</h1>
               <div className="post-actions">
-                <button className="view-button">View post</button>
+                <button
+                  className="view-button"
+                  onClick={() => navigate(`/post/view/${post.id}`)}
+                >
+                  View post
+                </button>
               </div>
             </div>
           );
